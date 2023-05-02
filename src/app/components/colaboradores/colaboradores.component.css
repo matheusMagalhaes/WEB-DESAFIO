@@ -1,0 +1,29 @@
+th {
+  text-align: center;
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+td {
+  color: #fff;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+
+.filtro-formulario {
+  display: flex;
+  justify-content: left;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+table {
+  background: #012B39;
+  border-radius: 0.25em;
+}
+
+
