@@ -1,0 +1,32 @@
+<h1>Adicionar nova empresa</h1>
+
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" [(ngModel)]="object.nome">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>CNPJ</mat-label>
+    <input matInput mask="00.000.000/0000-00" [(ngModel)]="object.cnpj">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" [(ngModel)]="object.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Endereço</mat-label>
+    <input matInput type="text" [(ngModel)]="object.endereco">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Telefone</mat-label>
+    <input matInput [(ngModel)]="object.telefone">
+  </mat-form-field>
+</div>
+<span>
+  <button (click)="adicionarEmpresa()"  matTooltip="Salvar">
+    <mat-icon> save</mat-icon>
+  </button>

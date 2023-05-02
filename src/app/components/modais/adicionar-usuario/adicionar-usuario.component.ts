@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Colaborador } from 'src/app/models/colaborador.model';
-import { Empresa } from 'src/app/models/empresa.mode';
+import { Empresa } from 'src/app/models/empresa.model';
 import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ export class AdicionarUsuarioComponent {
     private toastrService: ToastrService
   ) {}
 
-  object  = new Colaborador();
+  object = new Colaborador();
   ngOnInit() {
     this.buscarTodasEmpresa();
   }
@@ -33,6 +33,10 @@ export class AdicionarUsuarioComponent {
     debugger;
     this.colaboradorSercvice
       .salvarColaborador(this.object)
-      .subscribe(() => this.toastrService.success('Usuário criado!'));
+      .subscribe(() =>
+        this.toastrService.success('Usuário criado!', 'Sucesso', {
+          timeOut: 3000,
+        })
+      );
   }
 }

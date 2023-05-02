@@ -2,8 +2,8 @@
   <div class="filtro-formulario">
     <mat-form-field appearance="outline">
       <mat-label>Empresa</mat-label>
-      <mat-select>
-        <mat-option [value]="empresa.nome" (click)="filtrarTabela(empresa)" *ngFor="let empresa of empresas">{{ empresa.nome }}</mat-option>
+      <mat-select  (selectionChange)="filtrarTabela($event.value)">
+        <mat-option [value]="empresa" *ngFor="let empresa of empresas">{{ empresa.nome }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -30,7 +30,7 @@
 
     <ng-container matColumnDef="cpf">
       <th mat-header-cell *matHeaderCellDef>CPF</th>
-      <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
+      <td mat-cell *matCellDef="let element"  >{{ element.cpf }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">

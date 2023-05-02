@@ -4,13 +4,16 @@ import { Observable } from 'rxjs';
 import { environment } from '../enviroments.ts/enviroment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmpresaService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
+  buscarEmpresas(): Observable<any> {
+    return this.http.get(`${environment.urlBase}empresa/buscar`);
+  }
 
-  buscarEmpresas(): Observable<any>{
-    return this.http.get(`${environment.urlBase}empresa/buscar`)
+  salvarEmrpesa(object: any): Observable<any> {
+    return this.http.post(`${environment.urlBase}empresa/salvar`, object);
   }
 }

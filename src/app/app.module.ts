@@ -21,6 +21,8 @@ import { AdicionarUsuarioComponent } from './components/modais/adicionar-usuario
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { EmpresaComponent } from './components/empresa/empresa.component';
+import { AdicionarEmpresaComponent } from './components/modais/adicionar-empresa/adicionar-empresa.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     ColaboradoresComponent,
     AppMsgTabelaVaziaComponent,
     AdicionarUsuarioComponent,
+    EmpresaComponent,
+    AdicionarEmpresaComponent,
   ],
   imports: [
     BrowserModule,

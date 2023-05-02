@@ -1,4 +1,4 @@
-import { Empresa } from './empresa.mode';
+import { Empresa } from './empresa.model';
 
 export class Colaborador {
   cpf!: string;

@@ -1,0 +1,33 @@
+
+h1{
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div{
+  display: grid;
+  justify-content: center;
+}
+
+button {
+  padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #22b880;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    display: flex;
+    -webkit-transition: all 0.5s;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+}

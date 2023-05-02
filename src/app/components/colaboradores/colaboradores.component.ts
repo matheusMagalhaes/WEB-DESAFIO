@@ -3,12 +3,8 @@ import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmpresaService } from 'src/app/services/empresa.service';
-import { Empresa } from 'src/app/models/empresa.mode';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { Empresa } from 'src/app/models/empresa.model';
+import { MatDialog } from '@angular/material/dialog';
 import { AdicionarUsuarioComponent } from '../modais/adicionar-usuario/adicionar-usuario.component';
 @Component({
   selector: 'app-colaboradores',
@@ -29,10 +25,9 @@ export class ColaboradoresComponent {
     this.buscarTodasEmpresa();
   }
 
-  dataSource = new MatTableDataSource();
-  filteredData: any[] = [];
+  dataSource: any;
   empresas: Empresa[] = [];
-  lista: any[] = [];
+  filteredData: any;
   colunasTabela: any[] = [
     'codigoColaborador',
     'nome',
@@ -43,13 +38,9 @@ export class ColaboradoresComponent {
     'empresa',
   ];
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator!;
-  }
-
   buscarTodosColabores() {
     this.colaboradorSerivice.buscarTodosColaboraores().subscribe((res) => {
-      this.dataSource.data = res;
+      this.dataSource = res;
     });
   }
 
@@ -58,17 +49,20 @@ export class ColaboradoresComponent {
       this.empresas = res;
     });
   }
-
   filtrarTabela(event: any) {
-    this.filteredData = this.dataSource.data.filter(
-      (x: any) => x.empresa && x.empresa.id == event.id
+      const filteredData = [...this.dataSource].filter(
+      (x: any) => x.empresa.id == event.id
     );
+      this.dataSource = filteredData
   }
 
   adiconarColaborador() {
     const dialog = this.dialog.open(AdicionarUsuarioComponent, {
       width: 'auto',
       height: 'auto',
+    });
+    dialog.afterClosed().subscribe(() => {
+      this.buscarTodosColabores();
     });
   }
 }
