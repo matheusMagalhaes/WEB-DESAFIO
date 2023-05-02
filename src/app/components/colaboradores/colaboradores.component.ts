@@ -27,7 +27,7 @@ export class ColaboradoresComponent {
 
   dataSource: any;
   empresas: Empresa[] = [];
-  filteredData: any;
+  filteredData: any = new MatTableDataSource();
   colunasTabela: any[] = [
     'codigoColaborador',
     'nome',
@@ -50,10 +50,9 @@ export class ColaboradoresComponent {
     });
   }
   filtrarTabela(event: any) {
-      const filteredData = [...this.dataSource].filter(
+    this.filteredData = this.dataSource.filter(
       (x: any) => x.empresa.id == event.id
     );
-      this.dataSource = filteredData
   }
 
   adiconarColaborador() {
