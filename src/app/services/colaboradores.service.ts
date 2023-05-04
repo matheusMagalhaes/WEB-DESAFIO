@@ -16,4 +16,8 @@ export class ColaboradoresService {
   salvarColaborador(object: any) {
     return this.http.post(`${environment.urlBase}colaborador/salvar`, object);
   }
+
+  deletarColaborador(id: number) {
+    return this.http.delete(`${environment.urlBase}colaborador/deletar/${id}`);
+  }
 }

@@ -6,6 +6,7 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { Empresa } from 'src/app/models/empresa.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AdicionarUsuarioComponent } from '../modais/adicionar-usuario/adicionar-usuario.component';
+import { ModalConfirmacaoComponent } from '../modais/modal-confirmacao/modal-confirmacao.component';
 @Component({
   selector: 'app-colaboradores',
   templateUrl: './colaboradores.component.html',
@@ -18,8 +19,6 @@ export class ColaboradoresComponent {
     public dialog: MatDialog
   ) {}
 
-  @ViewChild(MatPaginator) paginator?: MatPaginator;
-
   ngOnInit() {
     this.buscarTodosColabores();
     this.buscarTodasEmpresa();
@@ -28,7 +27,9 @@ export class ColaboradoresComponent {
   dataSource: any;
   empresas: Empresa[] = [];
   filteredData: any = new MatTableDataSource();
+  colaboradorSelected!: any[];
   colunasTabela: any[] = [
+    'acao',
     'codigoColaborador',
     'nome',
     'cpf',
@@ -45,6 +46,7 @@ export class ColaboradoresComponent {
   }
 
   buscarTodasEmpresa() {
+    debugger;
     this.empresaSerice.buscarEmpresas().subscribe((res) => {
       this.empresas = res;
     });
@@ -63,5 +65,19 @@ export class ColaboradoresComponent {
     dialog.afterClosed().subscribe(() => {
       this.buscarTodosColabores();
     });
+  }
+
+  deletarUser(element: any) {
+    debugger
+    const dialog = this.dialog.open(ModalConfirmacaoComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: element,
+    });
+      dialog.afterClosed().subscribe((res) => {
+        if(res){
+          this.buscarTodosColabores();
+        }
+      });
   }
 }

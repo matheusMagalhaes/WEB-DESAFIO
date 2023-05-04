@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { AdicionarEmpresaComponent } from './components/modais/adicionar-empresa/adicionar-empresa.component';
+import { ModalConfirmacaoComponent } from './components/modais/modal-confirmacao/modal-confirmacao.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AdicionarEmpresaComponent } from './components/modais/adicionar-empresa
     AdicionarUsuarioComponent,
     EmpresaComponent,
     AdicionarEmpresaComponent,
+    ModalConfirmacaoComponent,
   ],
   imports: [
     BrowserModule,
