@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdicionarEmpresaComponent } from '../modais/adicionar-empresa/adicionar-empresa.component';
+import { ModalConfirmacaoComponent } from '../modais/modal-confirmacao/modal-confirmacao.component';
 
 @Component({
   selector: 'app-empresa',
@@ -22,6 +23,7 @@ export class EmpresaComponent {
   dataSource: any = new MatTableDataSource();
   filteredData: any[] = [];
   colunaEmpresa: any[] = [
+    'acao',
     'id',
     'nome',
     'cnpj',
@@ -37,12 +39,27 @@ export class EmpresaComponent {
   }
 
   criarEmpresa() {
-    const dialog = this.dialog.open(AdicionarEmpresaComponent, {
-      width: 'auto',
-      height: 'auto',
-    });
-    dialog.afterClosed().subscribe(() => {
-      this.buscarTodasEmpresa()
-    });
+    this.dialog
+      .open(AdicionarEmpresaComponent, {
+        width: 'auto',
+        height: 'auto',
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.buscarTodasEmpresa();
+      });
+  }
+
+  deletarEmpresa(element: any) {
+    this.dialog
+      .open(ModalConfirmacaoComponent, {
+        width: 'auto',
+        height: 'auto',
+        data: element,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) this.buscarTodasEmpresa();
+      });
   }
 }

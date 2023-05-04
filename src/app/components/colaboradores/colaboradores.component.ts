@@ -24,10 +24,9 @@ export class ColaboradoresComponent {
     this.buscarTodasEmpresa();
   }
 
-  dataSource: any;
+  dataSource: any = new MatTableDataSource();
   empresas: Empresa[] = [];
   filteredData: any = new MatTableDataSource();
-  colaboradorSelected!: any[];
   colunasTabela: any[] = [
     'acao',
     'codigoColaborador',
@@ -41,43 +40,44 @@ export class ColaboradoresComponent {
 
   buscarTodosColabores() {
     this.colaboradorSerivice.buscarTodosColaboraores().subscribe((res) => {
-      this.dataSource = res;
+      this.dataSource.data = res;
+      this.filteredData = new MatTableDataSource(res);
     });
   }
 
   buscarTodasEmpresa() {
-    debugger;
     this.empresaSerice.buscarEmpresas().subscribe((res) => {
       this.empresas = res;
     });
   }
   filtrarTabela(event: any) {
-    this.filteredData = this.dataSource.filter(
+    this.filteredData = this.dataSource.data.filter(
       (x: any) => x.empresa.id == event.id
     );
   }
 
   adiconarColaborador() {
-    const dialog = this.dialog.open(AdicionarUsuarioComponent, {
-      width: 'auto',
-      height: 'auto',
-    });
-    dialog.afterClosed().subscribe(() => {
-      this.buscarTodosColabores();
-    });
+    this.dialog
+      .open(AdicionarUsuarioComponent, {
+        width: 'auto',
+        height: 'auto',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) this.buscarTodosColabores();
+      });
   }
 
   deletarUser(element: any) {
-    debugger
-    const dialog = this.dialog.open(ModalConfirmacaoComponent, {
-      width: 'auto',
-      height: 'auto',
-      data: element,
-    });
-      dialog.afterClosed().subscribe((res) => {
-        if(res){
-          this.buscarTodosColabores();
-        }
+    this.dialog
+      .open(ModalConfirmacaoComponent, {
+        width: 'auto',
+        height: 'auto',
+        data: element,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) this.buscarTodosColabores();
       });
   }
 }

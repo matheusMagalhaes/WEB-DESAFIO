@@ -18,6 +18,7 @@ export class ModalConfirmacaoComponent {
 
   constructor(
     private colaboradorService: ColaboradoresService,
+    private empresaService: EmpresaService,
     public dialog: MatDialogRef<ModalConfirmacaoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private toastrService: ToastrService
@@ -28,11 +29,20 @@ export class ModalConfirmacaoComponent {
   }
 
   deletar() {
-    this.colaboradorService.deletarColaborador(this.data.id).subscribe(() => {
-      this.toastrService.success('Exclusão efetuada com sucesso!', '', {
-        toastClass: 'toast-success',
+    if (typeof this.data === 'object' && this.data.hasOwnProperty('cpf')) {
+      this.colaboradorService.deletarColaborador(this.data.id).subscribe(() => {
+        this.toastrService.success('Exclusão efetuada com sucesso!', '', {
+          toastClass: 'toast-success',
+        });
+        this.dialog.close(true);
       });
-    });
-    this.dialog.close(true);
+    } else {
+      this.empresaService.deletarEmpresa(this.data.id).subscribe(() => {
+        this.toastrService.success('Exclusão efetuada com sucesso!', '', {
+          toastClass: 'toast-success',
+        });
+        this.dialog.close(true);
+      });
+    }
   }
 }

@@ -16,4 +16,8 @@ export class EmpresaService {
   salvarEmrpesa(object: any): Observable<any> {
     return this.http.post(`${environment.urlBase}empresa/salvar`, object);
   }
-}
+
+
+  deletarEmpresa(id: number) {
+    return this.http.delete(`${environment.urlBase}empresa/deletar/${id}`);
+  }}

@@ -38,8 +38,7 @@ export class AdicionarUsuarioComponent {
       this.toastrService.success('Criado com sucesso!', '', {
         toastClass: 'toast-success',
       });
-
+      this.dialog.close(true);
     });
-    this.dialog.close(true)
   }
 }
