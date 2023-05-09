@@ -23,7 +23,7 @@ export class AdicionarUsuarioComponent {
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  formulario!: FormGroup;
+  formColaborador!: FormGroup;
   empresas: Empresa[] = [];
   ngOnInit() {
     this.buscarTodasEmpresa();
@@ -32,7 +32,7 @@ export class AdicionarUsuarioComponent {
 
 
   formValidation(){
-    this.formulario = this.formBuilder.group({
+    this.formColaborador = this.formBuilder.group({
       nome:[null, Validators.required],
       cpf:[null, Validators.required],
       email:[null, [Validators.required, Validators.email]],
@@ -49,7 +49,7 @@ export class AdicionarUsuarioComponent {
   }
 
   salvarColaborador() {
-    this.colaboradorSercvice.salvarColaborador(this.formulario.value).subscribe(() => {
+    this.colaboradorSercvice.salvarColaborador(this.formColaborador.value).subscribe(() => {
       this.toastrService.success('Criado com sucesso!', '', {
         toastClass: 'toast-success',
       });

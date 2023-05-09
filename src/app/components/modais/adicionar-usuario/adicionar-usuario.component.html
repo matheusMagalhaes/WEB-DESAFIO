@@ -1,6 +1,6 @@
 <h1>Adicionar novo usuário</h1>
 
-<form [formGroup]="formulario">
+<form [formGroup]="formColaborador">
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
@@ -20,7 +20,7 @@
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Telefone</mat-label>
-      <input matInput formControlName="telefone">
+      <input matInput formControlName="telefone"  mask="(00) 0 0000-0000">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -38,7 +38,7 @@
 </form>
 
 <span>
-  <button (click)="salvarColaborador()" matTooltip="Salvar" [disabled]="formulario.invalid">
+  <button (click)="salvarColaborador()" matTooltip="Salvar" [disabled]="formColaborador.invalid">
     <mat-icon> save</mat-icon>
   </button>
 </span>

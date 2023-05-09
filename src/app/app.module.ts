@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AdicionarUsuarioComponent } from './components/modais/adicionar-usuario/adicionar-usuario.component';
-import { NgxMaskModule } from 'ngx-mask';
+import { NgxMaskModule,  } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { EmpresaComponent } from './components/empresa/empresa.component';
@@ -54,6 +54,7 @@ import { ModalConfirmacaoComponent } from './components/modais/modal-confirmacao
     FormsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

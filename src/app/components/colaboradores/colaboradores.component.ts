@@ -24,6 +24,7 @@ export class ColaboradoresComponent {
     this.buscarTodasEmpresa();
   }
 
+
   dataSource: any = new MatTableDataSource();
   empresas: Empresa[] = [];
   filteredData: any = new MatTableDataSource();
