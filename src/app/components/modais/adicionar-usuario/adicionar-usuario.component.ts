@@ -5,6 +5,7 @@ import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-adicionar-usuario',
@@ -16,17 +17,31 @@ export class AdicionarUsuarioComponent {
     private empresaSerice: EmpresaService,
     private colaboradorSercvice: ColaboradoresService,
     private toastrService: ToastrService,
-    public dialog: MatDialogRef<AdicionarUsuarioComponent>
+    public dialog: MatDialogRef<AdicionarUsuarioComponent>,
+    private formBuilder: FormBuilder
   ) {}
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  object = new Colaborador();
+  formulario!: FormGroup;
+  empresas: Empresa[] = [];
   ngOnInit() {
     this.buscarTodasEmpresa();
+    this.formValidation()
   }
 
-  empresas: Empresa[] = [];
+
+  formValidation(){
+    this.formulario = this.formBuilder.group({
+      nome:[null, Validators.required],
+      cpf:[null, Validators.required],
+      email:[null, [Validators.required, Validators.email]],
+      telefone:[null, Validators.required],
+      endereco:[null, Validators.required],
+      empresa:[null, Validators.required]
+    })
+  }
+
   buscarTodasEmpresa() {
     this.empresaSerice.buscarEmpresas().subscribe((res) => {
       this.empresas = res;
@@ -34,7 +49,7 @@ export class AdicionarUsuarioComponent {
   }
 
   salvarColaborador() {
-    this.colaboradorSercvice.salvarColaborador(this.object).subscribe(() => {
+    this.colaboradorSercvice.salvarColaborador(this.formulario.value).subscribe(() => {
       this.toastrService.success('Criado com sucesso!', '', {
         toastClass: 'toast-success',
       });
