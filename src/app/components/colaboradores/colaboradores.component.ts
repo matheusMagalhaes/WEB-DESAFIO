@@ -37,6 +37,7 @@ export class ColaboradoresComponent {
     'telefone',
     'endereco',
     'empresa',
+    'cargo'
   ];
 
   buscarTodosColabores() {

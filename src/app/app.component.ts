@@ -7,16 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-desafio';
-
-  colaborador!: Boolean
-  empresa!: Boolean
-  isColaborador() {
-    this.colaborador = true
-    this.empresa = false
-  }
-  isEmpresa(){
-    this.colaborador = false
-    this.empresa =  true
-  }
 }
-

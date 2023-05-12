@@ -1,9 +1,7 @@
-<div style="display: flex; align-items: center;">
-  <div class="example-button-container" style="margin-left: 10px;">
-    <button mat-fab color="accent" (click)="criarEmpresa()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+<div class="button-container">
+  <button matTooltip="Adicionar nova empresa" mat-fab  (click)="criarEmpresa()">
+    <mat-icon>add_home_work</mat-icon>
+  </button>
 </div>
 
 <div fxLayout="row" *ngIf="dataSource.data.length" style="padding:10px">

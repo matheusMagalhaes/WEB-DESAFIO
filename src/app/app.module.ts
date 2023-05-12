@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { AdicionarEmpresaComponent } from './components/modais/adicionar-empresa/adicionar-empresa.component';
 import { ModalConfirmacaoComponent } from './components/modais/modal-confirmacao/modal-confirmacao.component';
+import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ModalConfirmacaoComponent } from './components/modais/modal-confirmacao
     EmpresaComponent,
     AdicionarEmpresaComponent,
     ModalConfirmacaoComponent,
+    HeaderNavComponent,
   ],
   imports: [
     BrowserModule,

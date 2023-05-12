@@ -1,6 +1,6 @@
-<div style="display: flex; align-items: center;">
+<div class="container">
   <div class="filtro-formulario">
-    <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline">
       <mat-label>Empresa</mat-label>
       <mat-select (selectionChange)="filtrarTabela($event.value)">
         <mat-option [value]="empresa" *ngFor="let empresa of empresas">{{ empresa.nome }}</mat-option>
@@ -8,9 +8,9 @@
     </mat-form-field>
   </div>
 
-  <div class="example-button-container" style="margin-left: 10px;">
-    <button mat-fab color="accent" matTooltip="Adicionar novo colobaorador" (click)="adiconarColaborador()">
-      <mat-icon>add</mat-icon>
+  <div style="margin-right: 10px; ">
+    <button mat-fab matTooltip="Adicionar novo colaborador" (click)="adiconarColaborador()">
+      <mat-icon>person_add</mat-icon>
     </button>
   </div>
 
@@ -62,6 +62,11 @@
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef>Empresa</th>
       <td mat-cell *matCellDef="let element">{{ element.empresa.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cargo">
+      <th mat-header-cell *matHeaderCellDef>Cargo</th>
+      <td mat-cell *matCellDef="let element">{{ element.cargo }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>

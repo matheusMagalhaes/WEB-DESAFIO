@@ -18,3 +18,15 @@ table {
   background: #012B39;
   border-radius: 0.25em;
 }
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: right;
+  margin-right: 10px;
+}
+.mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #52be52;
+}

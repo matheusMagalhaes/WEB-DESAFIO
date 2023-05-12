@@ -27,3 +27,6 @@ table {
 }
 
 
+.mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #52be52;
+}

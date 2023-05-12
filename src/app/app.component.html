@@ -1,15 +1,6 @@
-<div style="display: flex;
-justify-content: center;
-margin-top: 100px;
-align-items: center;">
-  <button (click)="isEmpresa()" mat-button color="accent" style="margin-right: 10px;">
-    Empresa
-  </button>
-  <button (click)="isColaborador()" mat-button color="primary">
-    Colaborador
-  </button>
-</div>
-
-
-<app-colaboradores *ngIf="colaborador == true"></app-colaboradores>
-<app-empresa *ngIf="empresa == true"></app-empresa>
+<header>
+  <app-header-nav></app-header-nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
