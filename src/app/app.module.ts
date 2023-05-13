@@ -37,7 +37,7 @@ import { CpfCnpjPipe } from './pipes/cpfCnpj.pipe';
     AdicionarEmpresaComponent,
     ModalConfirmacaoComponent,
     HeaderNavComponent,
-    CpfCnpjPipe
+    CpfCnpjPipe,
   ],
   imports: [
     BrowserModule,

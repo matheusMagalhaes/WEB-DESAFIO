@@ -6,7 +6,6 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CargoService } from 'src/app/services/cargo.service';
 
 @Component({
   selector: 'app-adicionar-usuario',
@@ -19,8 +18,7 @@ export class AdicionarUsuarioComponent {
     private colaboradorSercvice: ColaboradoresService,
     private toastrService: ToastrService,
     public dialog: MatDialogRef<AdicionarUsuarioComponent>,
-    private formBuilder: FormBuilder,
-    private cargoService: CargoService
+    private formBuilder: FormBuilder
   ) {}
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -32,7 +30,6 @@ export class AdicionarUsuarioComponent {
   ngOnInit() {
     this.buscarTodasEmpresa();
     this.formValidation();
-    this.buscarCargos();
   }
 
   formValidation() {
@@ -62,11 +59,5 @@ export class AdicionarUsuarioComponent {
         });
         this.dialog.close(true);
       });
-  }
-
-  buscarCargos() {
-    this.cargoService.buscarCargos().subscribe((res) => {
-      this.cargos = res;
-    });
   }
 }
