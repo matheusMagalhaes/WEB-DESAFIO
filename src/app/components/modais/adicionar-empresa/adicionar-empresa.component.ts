@@ -67,7 +67,6 @@ export class AdicionarEmpresaComponent {
     }
 
   preencherForm(data: any) {
-    debugger
     this.empresaForm.patchValue({
       endereco: {
         rua: data.logradouro,

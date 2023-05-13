@@ -6,6 +6,7 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CargoService } from 'src/app/services/cargo.service';
 
 @Component({
   selector: 'app-adicionar-usuario',
@@ -18,28 +19,32 @@ export class AdicionarUsuarioComponent {
     private colaboradorSercvice: ColaboradoresService,
     private toastrService: ToastrService,
     public dialog: MatDialogRef<AdicionarUsuarioComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cargoService: CargoService
   ) {}
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   formColaborador!: FormGroup;
+  cargos: any[] = [];
   empresas: Empresa[] = [];
+
   ngOnInit() {
     this.buscarTodasEmpresa();
-    this.formValidation()
+    this.formValidation();
+    this.buscarCargos();
   }
 
-
-  formValidation(){
+  formValidation() {
     this.formColaborador = this.formBuilder.group({
-      nome:[null, Validators.required],
-      cpf:[null, Validators.required],
-      email:[null, [Validators.required, Validators.email]],
-      telefone:[null, Validators.required],
-      endereco:[null, Validators.required],
-      empresa:[null, Validators.required]
-    })
+      nome: [null, Validators.required],
+      cpf: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      telefone: [null, Validators.required],
+      endereco: [null, Validators.required],
+      empresa: [null, Validators.required],
+      cargo: [null, Validators.required],
+    });
   }
 
   buscarTodasEmpresa() {
@@ -49,11 +54,19 @@ export class AdicionarUsuarioComponent {
   }
 
   salvarColaborador() {
-    this.colaboradorSercvice.salvarColaborador(this.formColaborador.value).subscribe(() => {
-      this.toastrService.success('Criado com sucesso!', '', {
-        toastClass: 'toast-success',
+    this.colaboradorSercvice
+      .salvarColaborador(this.formColaborador.value)
+      .subscribe(() => {
+        this.toastrService.success('Criado com sucesso!', '', {
+          toastClass: 'toast-success',
+        });
+        this.dialog.close(true);
       });
-      this.dialog.close(true);
+  }
+
+  buscarCargos() {
+    this.cargoService.buscarCargos().subscribe((res) => {
+      this.cargos = res;
     });
   }
 }

@@ -16,14 +16,13 @@ export class ColaboradoresComponent {
   constructor(
     private colaboradorSerivice: ColaboradoresService,
     private empresaSerice: EmpresaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
     this.buscarTodosColabores();
     this.buscarTodasEmpresa();
   }
-
 
   dataSource: any = new MatTableDataSource();
   empresas: Empresa[] = [];
@@ -37,7 +36,7 @@ export class ColaboradoresComponent {
     'telefone',
     'endereco',
     'empresa',
-    'cargo'
+    'cargo',
   ];
 
   buscarTodosColabores() {
@@ -82,4 +81,6 @@ export class ColaboradoresComponent {
         if (res) this.buscarTodosColabores();
       });
   }
+
+
 }

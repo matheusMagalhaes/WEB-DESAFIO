@@ -4,5 +4,15 @@ header {
   align-items: center;
   background-color: #c9c9f1;
   width: 100%;
+  overflow: hidden;
+  padding: 20px 10px;
 
+}
+
+@media screen and (max-width: 500px){
+  header {
+    float: none;
+    display: block;
+    text-align: center;
+  }
 }

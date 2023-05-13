@@ -20,7 +20,7 @@
   <div>
     <mat-form-field appearance="outline">
       <mat-label>Telefone</mat-label>
-      <input matInput formControlName="telefone"  mask="(00) 0 0000-0000">
+      <input matInput formControlName="telefone" mask="(00) 0 0000-0000">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -35,6 +35,13 @@
       </mat-select>
     </mat-form-field>
   </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Cargo</mat-label>
+    <mat-select formControlName="cargo">
+      <mat-option [value]="cargo" *ngFor="let cargo of cargos">{{ cargo.cargo }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </form>
 
 <span>
