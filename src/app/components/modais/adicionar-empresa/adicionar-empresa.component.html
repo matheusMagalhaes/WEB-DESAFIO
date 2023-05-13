@@ -1,7 +1,7 @@
 <h1>Adicionar nova empresa</h1>
 
 <form [formGroup]="empresaForm">
-  <div>
+  <div class="empresa-container">
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
       <input matInput type="text" formControlName="nome">
@@ -18,15 +18,49 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Endereço</mat-label>
-      <input matInput type="text" formControlName="endereco">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" mask="(00) 0 0000-0000">
+    </mat-form-field>
+  </div>
+
+  <h2>Endereco</h2>
+  <div class="endereco-form" formGroupName="endereco">
+    <mat-form-field appearance="outline">
+      <mat-label>CEP</mat-label>
+      <input matInput type="text" formControlName="cep"  mask="00000-000" (blur)="buscarEnderecoPorCep()">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Telefone</mat-label>
-      <input matInput formControlName="telefone">
+      <mat-label>Numero</mat-label>
+      <input matInput type="text" formControlName="numero" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Complemento</mat-label>
+      <input matInput type="text" formControlName="complemento" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rua</mat-label>
+      <input matInput type="text" formControlName="rua">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Bairro</mat-label>
+      <input matInput type="text" formControlName="bairro">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cidade</mat-label>
+      <input matInput type="text" formControlName="cidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>UF</mat-label>
+      <input matInput type="text" formControlName="uf">
     </mat-form-field>
   </div>
+
 </form>
 <span>
   <button (click)="adicionarEmpresa()" matTooltip="Salvar" [disabled]="empresaForm.invalid">
