@@ -21,7 +21,6 @@ h1, h2, h3 {
   color: white;
   position: fixed;
   top: 20px;
-  border-radius: 10px;
   margin-top: 3em;
   width: 100%;
 }
@@ -30,4 +29,16 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+.toast-error{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(225, 42, 42);
+  color: white;
+  position: fixed;
+  top: 20px;
+  margin-top: 3em;
+  width: 100%;
 }

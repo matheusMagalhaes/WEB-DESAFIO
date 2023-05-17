@@ -45,19 +45,33 @@ export class AdicionarUsuarioComponent {
   }
 
   buscarTodasEmpresa() {
-    this.empresaSerice.buscarEmpresas().subscribe((res) => {
-      this.empresas = res;
-    });
+    this.empresaSerice.buscarEmpresas().subscribe(
+      (res) => {
+        this.empresas = res;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   salvarColaborador() {
     this.colaboradorSercvice
       .salvarColaborador(this.formColaborador.value)
-      .subscribe(() => {
-        this.toastrService.success('Criado com sucesso!', '', {
-          toastClass: 'toast-success',
-        });
-        this.dialog.close(true);
-      });
+      .subscribe(
+        () => {
+          this.toastrService.success('Criado com sucesso!', '', {
+            toastClass: 'toast-success',
+          });
+          this.dialog.close(true);
+        },
+        (error) => {
+          this.toastrService.error(error.error.error, '', {
+            toastClass: 'toast-error',
+          });
+          this.dialog.close(true);
+          console.log(error)
+        }
+      );
   }
 }
