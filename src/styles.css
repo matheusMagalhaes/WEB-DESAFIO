@@ -10,10 +10,6 @@ body {
 }
 
 
-h1, h2, h3 {
-  font-family: sans-serif;
-}
-
 .toast-success {
   display: flex;
   justify-content: center;
@@ -32,7 +28,7 @@ h1, h2, h3 {
 }
 
 
-.toast-error{
+.toast-error {
   display: flex;
   justify-content: center;
   background-color: rgb(225, 42, 42);
@@ -42,3 +38,5 @@ h1, h2, h3 {
   margin-top: 3em;
   width: 100%;
 }
+
+

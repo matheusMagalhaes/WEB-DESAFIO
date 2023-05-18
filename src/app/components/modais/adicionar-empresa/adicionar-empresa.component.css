@@ -1,13 +1,9 @@
+
 h1 {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   margin-top: 10px;
-}
 
-h2 {
-  margin-left: 1em;
 }
-
 .empresa-container {
   display: flex;
   justify-content: space-around;
