@@ -6,6 +6,7 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MsgService } from 'src/app/services/msg.service';
 
 @Component({
   selector: 'app-adicionar-usuario',
@@ -16,7 +17,7 @@ export class AdicionarUsuarioComponent {
   constructor(
     private empresaSerice: EmpresaService,
     private colaboradorSercvice: ColaboradoresService,
-    private toastrService: ToastrService,
+    private msgService: MsgService,
     public dialog: MatDialogRef<AdicionarUsuarioComponent>,
     private formBuilder: FormBuilder
   ) {}
@@ -60,15 +61,11 @@ export class AdicionarUsuarioComponent {
       .salvarColaborador(this.formColaborador.value)
       .subscribe({
         next: () => {
-          this.toastrService.success('Criado com sucesso!', '', {
-            toastClass: 'toast-success',
-          });
+          this.msgService.msgSucesso('Usuario criado com sucesso!');
           this.dialog.close(true);
         },
         error: (res) => {
-          this.toastrService.error(res.error.message, '', {
-            toastClass: 'toast-error',
-          });
+          this.msgService.msgError(res.error.message);
           this.dialog.close(true);
         },
       });
