@@ -58,20 +58,19 @@ export class AdicionarUsuarioComponent {
   salvarColaborador() {
     this.colaboradorSercvice
       .salvarColaborador(this.formColaborador.value)
-      .subscribe(
-        () => {
+      .subscribe({
+        next: () => {
           this.toastrService.success('Criado com sucesso!', '', {
             toastClass: 'toast-success',
           });
           this.dialog.close(true);
         },
-        (error) => {
-          this.toastrService.error(error.error.error, '', {
+        error: (res) => {
+          this.toastrService.error(res.error.message, '', {
             toastClass: 'toast-error',
           });
           this.dialog.close(true);
-          console.log(error)
-        }
-      );
+        },
+      });
   }
 }
