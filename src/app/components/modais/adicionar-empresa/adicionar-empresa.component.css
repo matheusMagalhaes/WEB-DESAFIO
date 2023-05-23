@@ -1,9 +1,13 @@
-
 h1 {
   text-align: center;
   margin-top: 10px;
 
 }
+
+h2 {
+  margin-left: 10px;
+}
+
 .empresa-container {
   display: flex;
   justify-content: space-around;
@@ -34,8 +38,14 @@ button:disabled {
   background-color: grey;
 }
 
+legend {
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
 .endereco-form {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-evenly
 }
