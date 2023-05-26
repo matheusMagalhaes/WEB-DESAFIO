@@ -30,6 +30,7 @@ export class EmpresaComponent {
     'email',
     'telefone',
     'endereco',
+    'numero'
   ];
 
   buscarTodasEmpresa() {

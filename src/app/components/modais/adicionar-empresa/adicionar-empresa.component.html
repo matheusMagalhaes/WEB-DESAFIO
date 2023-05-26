@@ -23,14 +23,14 @@
     </mat-form-field>
   </div>
 
-  <Legend>Endereco</Legend>
+  <Legend>Endereço  </Legend>
   <section formGroupName="endereco" class="endereco-form ">
     <mat-form-field appearance="outline">
       <mat-label>CEP</mat-label>
       <input matInput type="text" formControlName="cep" mask="00000-000" (blur)="buscarEnderecoPorCep()">
     </mat-form-field>
 
-    <mat-form-field appearance="outline"  [style.width.%]="71">
+    <mat-form-field appearance="outline"  [style.width.rem]="50">
       <mat-label>Rua</mat-label>
       <input matInput type="text" formControlName="rua">
     </mat-form-field>
@@ -45,12 +45,12 @@
       <input matInput type="text" formControlName="complemento">
     </mat-form-field>
 
-    <mat-form-field appearance="outline"  [style.width.%]="50">
+    <mat-form-field appearance="outline"  [style.width.rem]="35">
       <mat-label>Bairro</mat-label>
       <input matInput type="text" formControlName="bairro">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" [style.width.%]="30">
+    <mat-form-field appearance="outline" [style.width.rem]="50.5">
       <mat-label>Cidade</mat-label>
       <input matInput type="text" formControlName="cidade">
     </mat-form-field>
