@@ -38,14 +38,4 @@ button:disabled {
   background-color: grey;
 }
 
-legend {
-  margin-left: 2.2rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
 
-.endereco-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly
-}
