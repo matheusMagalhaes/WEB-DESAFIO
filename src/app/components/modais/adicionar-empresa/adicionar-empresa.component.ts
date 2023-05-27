@@ -25,7 +25,8 @@ export class AdicionarEmpresaComponent {
   }
 
   enderecoSet(endereco: any) {
-    this.endereco = endereco
+    this.endereco = endereco;
+    this.empresaForm.get('endereco')?.patchValue(this.endereco);
   }
 
   formValidation() {
