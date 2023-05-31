@@ -3,6 +3,7 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 
 @Component({
   selector: 'app-adicionar-empresa',
@@ -11,10 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdicionarEmpresaComponent {
   constructor(
-    private empresaSerice: EmpresaService,
+    private empresaService: EmpresaService,
     private toastrService: ToastrService,
     public dialog: MatDialogRef<AdicionarEmpresaComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cepService: ConsultaCepService
   ) {}
 
   empresaForm!: FormGroup;
@@ -24,35 +26,47 @@ export class AdicionarEmpresaComponent {
     this.formValidation();
   }
 
-  enderecoSet(endereco: any) {
-    this.endereco = endereco;
-    this.empresaForm.get('endereco')?.patchValue(this.endereco);
-  }
-
   formValidation() {
     this.empresaForm = this.formBuilder.group({
       nome: [null, Validators.required],
       cnpj: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       telefone: [null, Validators.required],
-      endereco: this.endereco,
-      // endereco: this.formBuilder.group({
-      //   cep: [null, Validators.required],
-      //   numero: [null, Validators.required],
-      //   complemento:[null],
-      //   rua: [null, Validators.required],
-      //   bairro: [null, Validators.required],
-      //   cidade: [null, Validators.required],
-      //   uf: [null, Validators.required],
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        uf: [null, Validators.required],
+      }),
+    });
+  }
 
-      // }),
+  buscarEnderecoPorCep() {
+    debugger;
+    let cep = this.empresaForm.get('endereco.cep')!.value;
+    if (cep != null && cep !== '') {
+      this.cepService?.consultaCep(cep)?.subscribe((data: any) => {
+        this.preencherForm(data);
+      });
+    }
+  }
+
+  preencherForm(data: any) {
+    this.empresaForm.patchValue({
+      endereco: {
+        rua: data.logradouro,
+        bairro: data.bairro,
+        cidade: data.localidade,
+        uf: data.uf,
+      },
     });
   }
 
   adicionarEmpresa() {
-    debugger;
-    this.empresaSerice.salvarEmrpesa(this.empresaForm.value).subscribe(() => {
-      console.log(this.empresaForm);
+    this.empresaService.salvarEmrpesa(this.empresaForm.value).subscribe(() => {
       this.toastrService.success('Empresa criada!', '', {
         toastClass: 'toast-success',
       });

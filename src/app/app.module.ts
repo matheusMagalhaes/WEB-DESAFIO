@@ -26,7 +26,6 @@ import { AdicionarEmpresaComponent } from './components/modais/adicionar-empresa
 import { ModalConfirmacaoComponent } from './components/modais/modal-confirmacao/modal-confirmacao.component';
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { CpfCnpjPipe } from './pipes/cpfCnpj.pipe';
-import { EnderecoFormComponent } from './components/forms/endereco-form/endereco-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { EnderecoFormComponent } from './components/forms/endereco-form/endereco
     ModalConfirmacaoComponent,
     HeaderNavComponent,
     CpfCnpjPipe,
-    EnderecoFormComponent,
   ],
   imports: [
     BrowserModule,
