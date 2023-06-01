@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MsgService } from 'src/app/services/msg.service';
+import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 
 @Component({
   selector: 'app-adicionar-usuario',
@@ -19,7 +20,8 @@ export class AdicionarUsuarioComponent {
     private colaboradorSercvice: ColaboradoresService,
     private msgService: MsgService,
     public dialog: MatDialogRef<AdicionarUsuarioComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cepService: ConsultaCepService
   ) {}
 
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -39,9 +41,17 @@ export class AdicionarUsuarioComponent {
       cpf: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       telefone: [null, Validators.required],
-      endereco: [null, Validators.required],
       empresa: [null, Validators.required],
       cargo: [null, Validators.required],
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        uf: [null, Validators.required],
+      }),
     });
   }
 
@@ -54,6 +64,26 @@ export class AdicionarUsuarioComponent {
         console.log(error);
       }
     );
+  }
+
+  buscarEnderecoPorCep() {
+    let cep = this.formColaborador.get('endereco.cep')!.value;
+    if (cep != null && cep !== '') {
+      this.cepService?.consultaCep(cep)?.subscribe((data: any) => {
+        this.preencherForm(data);
+      });
+    }
+  }
+
+  preencherForm(data: any) {
+    this.formColaborador.patchValue({
+      endereco: {
+        rua: data.logradouro,
+        bairro: data.bairro,
+        cidade: data.localidade,
+        uf: data.uf,
+      },
+    });
   }
 
   salvarColaborador() {

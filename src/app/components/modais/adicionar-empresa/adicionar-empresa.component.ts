@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
+import { MsgService } from 'src/app/services/msg.service';
 
 @Component({
   selector: 'app-adicionar-empresa',
@@ -13,10 +14,10 @@ import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 export class AdicionarEmpresaComponent {
   constructor(
     private empresaService: EmpresaService,
-    private toastrService: ToastrService,
+    private msgService: MsgService,
     public dialog: MatDialogRef<AdicionarEmpresaComponent>,
     private formBuilder: FormBuilder,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
   ) {}
 
   empresaForm!: FormGroup;
@@ -45,7 +46,6 @@ export class AdicionarEmpresaComponent {
   }
 
   buscarEnderecoPorCep() {
-    debugger;
     let cep = this.empresaForm.get('endereco.cep')!.value;
     if (cep != null && cep !== '') {
       this.cepService?.consultaCep(cep)?.subscribe((data: any) => {
@@ -67,10 +67,12 @@ export class AdicionarEmpresaComponent {
 
   adicionarEmpresa() {
     this.empresaService.salvarEmrpesa(this.empresaForm.value).subscribe(() => {
-      this.toastrService.success('Empresa criada!', '', {
-        toastClass: 'toast-success',
-      });
+      this.msgService.msgSucesso('Empresa criada com sucesso!')
       this.dialog.close(true);
     });
+  }
+
+  modalClose(){
+    this.dialog.close()
   }
 }

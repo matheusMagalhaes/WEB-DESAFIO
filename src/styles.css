@@ -40,3 +40,77 @@ body {
 }
 
 
+
+Legend {
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.endereco-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly
+}
+
+.mat-typography h1 {
+  font-family: sans-serif;
+}
+
+
+.save-btn-position {
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+}
+
+.save-btn {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #22b880;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  display: flex;
+  -webkit-transition: all 0.5s;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+}
+
+.save-btn:disabled {
+  background-color: grey;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-icon {
+  color: #bd0a0a;
+  font-size: 30px
+}
+
+.close-modal-btn {
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: #dc4242;
+}

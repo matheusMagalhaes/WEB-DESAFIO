@@ -1,7 +1,7 @@
-<h1>Adicionar novo usuário</h1>
+<h1>Adicionar novo colaborador</h1>
 
 <form [formGroup]="formColaborador">
-  <div class="form-container">
+  <div class="colaborador-container">
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
       <input matInput type="text" formControlName="nome">
@@ -35,13 +35,51 @@
       <input matInput type="text" formControlName="cargo">
     </mat-form-field>
   </div>
-  <div></div>
+
+  <Legend>Endereço</Legend>
+  <section formGroupName="endereco" class="endereco-form ">
+    <mat-form-field appearance="outline">
+      <mat-label>CEP</mat-label>
+      <input matInput type="text" formControlName="cep" mask="00000-000" (blur)="buscarEnderecoPorCep()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.rem]="38">
+      <mat-label>Rua</mat-label>
+      <input matInput type="text" formControlName="rua">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Numero</mat-label>
+      <input matInput type="text" formControlName="numero">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Complemento</mat-label>
+      <input matInput type="text" formControlName="complemento">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.rem]="22">
+      <mat-label>Bairro</mat-label>
+      <input matInput type="text" formControlName="bairro">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.rem]="29.1">
+      <mat-label>Cidade</mat-label>
+      <input matInput type="text" formControlName="cidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>UF</mat-label>
+      <input matInput type="text" formControlName="uf">
+    </mat-form-field>
+  </section>
+
 
 </form>
 
 
-<span>
-  <button class="save-button" (click)="salvarColaborador()" matTooltip="Salvar" [disabled]="formColaborador.invalid">
+<span class="save-btn-position">
+  <button class="save-btn" (click)="salvarColaborador()" matTooltip="Salvar" [disabled]="formColaborador.invalid">
     <mat-icon>save</mat-icon>
   </button>
 </span>
