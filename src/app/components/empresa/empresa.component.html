@@ -9,9 +9,8 @@
 
     <ng-container matColumnDef="acao">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element"> <button matTooltip="Remover" style="background: none;
-        border: none; cursor:pointer;" (click)="deletarEmpresa(element)"><mat-icon
-            style="color: #dc4242;">delete</mat-icon>
+      <td mat-cell *matCellDef="let element"> <button matTooltip="Remover" class="delete-btn"
+          (click)="deletarEmpresa(element)"><mat-icon class="delete-icon">delete</mat-icon>
         </button></td>
     </ng-container>
 

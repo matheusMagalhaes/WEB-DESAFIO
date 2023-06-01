@@ -100,4 +100,8 @@ export class AdicionarUsuarioComponent {
         },
       });
   }
+
+  modalClose() {
+    this.dialog.close();
+  }
 }
