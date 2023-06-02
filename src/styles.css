@@ -92,17 +92,12 @@ Legend {
   background: none;
   border: none;
   cursor: pointer;
+  float: right;
 }
 
 .close-icon {
   color: #bd0a0a;
-  font-size: 30px
-}
-
-.close-modal-btn {
-  float: right;
-  margin-top: 5px;
-  margin-right: 5px;
+  font-size: 25px
 }
 
 .delete-btn {
