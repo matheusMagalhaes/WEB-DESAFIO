@@ -17,8 +17,7 @@ mat-cell {
 mat-table {
   background: #012B39;
   border-radius: 0.25em;
-  overflow: auto;
-  max-height: 500px;
+
 }
 
 
