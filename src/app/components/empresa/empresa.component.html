@@ -33,7 +33,8 @@
 
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element" matTooltip="{{element.email}}">{{ element.email }}</mat-cell>
+        <mat-cell *matCellDef="let element" matTooltip="{{element.email}}" class="email-cell">
+          {{ element.email }}</mat-cell>
 
       </ng-container>
 
