@@ -1,4 +1,4 @@
-th {
+mat-header-cell  {
   text-align: center;
   border-bottom: 1px solid #364043;
   color: #E2B842;
@@ -8,15 +8,17 @@ th {
   text-align: left;
 }
 
-td {
+mat-cell {
   color: #fff;
   font-weight: 400;
   padding: 0.65em 1em;
 }
 
-table {
+mat-table {
   background: #012B39;
   border-radius: 0.25em;
+  overflow: auto;
+  max-height: 500px;
 }
 
 
@@ -27,6 +29,25 @@ table {
   justify-content: right;
   margin-right: 10px;
 }
+
 .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
   --mdc-fab-container-color: #52be52;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
 }
