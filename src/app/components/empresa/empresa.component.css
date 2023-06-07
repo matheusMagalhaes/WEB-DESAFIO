@@ -1,4 +1,4 @@
-mat-header-cell  {
+mat-header-cell {
   text-align: center;
   border-bottom: 1px solid #364043;
   color: #E2B842;
@@ -20,6 +20,12 @@ mat-table {
 
 }
 
+section {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+}
+
 
 .button-container {
   display: flex;
@@ -34,19 +40,19 @@ mat-table {
 }
 
 @media(max-width: 600px) {
-  .mobile-label {
-    width: 80px;
-    display: inline-block;
-        font-weight: bold;
+
+  mat-table {
+    display: flex;
   }
 
-  .mat-header-row {
-    display: none;
+  mat-header-row {
+    flex-direction: column;
   }
 
-  .mat-row {
+  mat-row {
     flex-direction: column;
     align-items: start;
     padding: 8px 24px;
   }
+
 }

@@ -5,49 +5,49 @@
     </button>
   </span>
 
-  <section *ngIf="dataSource.data.length" style="padding:10px">
+  <section *ngIf="dataSource.data.length">
     <mat-table [dataSource]="dataSource" class=" mat-elevation-z8">
 
       <ng-container matColumnDef="acao">
-        <mat-header-cell *matHeaderCellDef class="mobile-label"></mat-header-cell>
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element"> <button matTooltip="Remover" class="delete-btn"
             (click)="deletarEmpresa(element)"><mat-icon class="delete-icon">delete</mat-icon>
           </button></mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Código empresa</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Código empresa</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="nome">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Nome</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
         <mat-cell *matCellDef="let element">
           {{ element.nome }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="cnpj">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">CNPJ</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>CNPJ</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.cnpj | cpfcnpj}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Email</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="telefone">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Telefone</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.telefone }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="endereco">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Endereço</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Endereço</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.endereco.rua }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="numero">
-        <mat-header-cell *matHeaderCellDef class="mobile-label">Nº</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Nº</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.endereco.numero }}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="colunaEmpresa"></mat-header-row>
