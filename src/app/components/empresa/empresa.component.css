@@ -1,25 +1,3 @@
-mat-header-cell {
-  text-align: center;
-  border-bottom: 1px solid #364043;
-  color: #E2B842;
-  font-size: 0.85em;
-  font-weight: 600;
-  padding: 0.5em 1em;
-  text-align: left;
-}
-
-mat-cell {
-  color: #fff;
-  font-weight: 400;
-  padding: 0.65em 1em;
-}
-
-mat-table {
-  background: #012B39;
-  border-radius: 0.25em;
-
-}
-
 section {
   padding-left: 5px;
   padding-right: 5px;
@@ -27,17 +5,11 @@ section {
 }
 
 
-.button-container {
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-  justify-content: right;
-  margin-right: 10px;
+.mat-mdc-cell {
+  width: 50%;
+  display: block;
 }
 
-.mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
-  --mdc-fab-container-color: #52be52;
-}
 
 @media(max-width: 600px) {
 

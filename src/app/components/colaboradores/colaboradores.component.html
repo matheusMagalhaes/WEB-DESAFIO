@@ -1,6 +1,6 @@
 <div class="container">
   <div class="filtro-formulario">
-      <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Empresa</mat-label>
       <mat-select (selectionChange)="filtrarTabela($event.value)">
         <mat-option [value]="empresa" *ngFor="let empresa of empresas">{{ empresa.nome }}</mat-option>
@@ -16,62 +16,62 @@
 
 </div>
 
-<div fxLayout="row" *ngIf="filteredData.length" style="padding:10px">
-  <table mat-table [dataSource]="filteredData" class="mat-elevation-z8">
+<section fxLayout="row" *ngIf="filteredData.length" style="padding:10px">
+  <mat-table [dataSource]="filteredData" class="mat-elevation-z8">
 
     <ng-container matColumnDef="acao">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let element">
         <button matTooltip="Remover" class="delete-btn" (click)="deletarUser(element)"><mat-icon
             class="delete-icon">delete</mat-icon>
         </button>
-      </td>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="codigoColaborador">
-      <th mat-header-cell *matHeaderCellDef>Código colaborador</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      <mat-header-cell *matHeaderCellDef>Código colaborador</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.nome }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="cpf">
-      <th mat-header-cell *matHeaderCellDef>CPF</th>
-      <td mat-cell *matCellDef="let element">{{ element.cpf | cpfcnpj }}</td>
+      <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.cpf | cpfcnpj }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="telefone">
-      <th mat-header-cell *matHeaderCellDef>Telefone</th>
-      <td mat-cell *matCellDef="let element">{{ element.telefone }}</td>
+      <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.telefone }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="endereco">
-      <th mat-header-cell *matHeaderCellDef>Endereço</th>
-      <td mat-cell *matCellDef="let element">{{ element.endereco }}</td>
+      <mat-header-cell *matHeaderCellDef>Endereço</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.endereco.rua }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="empresa">
-      <th mat-header-cell *matHeaderCellDef>Empresa</th>
-      <td mat-cell *matCellDef="let element">{{ element.empresa.nome }}</td>
+      <mat-header-cell *matHeaderCellDef>Empresa</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.empresa.nome }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="cargo">
-      <th mat-header-cell *matHeaderCellDef>Cargo</th>
-      <td mat-cell *matCellDef="let element">{{ element.cargo }}</td>
+      <mat-header-cell *matHeaderCellDef>Cargo</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.cargo }}</mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
-    <tr mat-row *matRowDef="let row; columns: colunasTabela"></tr>
-  </table>
-</div>
+    <mat-header-row *matHeaderRowDef="colunasTabela"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: colunasTabela"></mat-row>
+  </mat-table>
+</section>
 <div *ngIf="!filteredData.length" style="display: flex; justify-content: center">
   <app-app-msg-tabela-vazia></app-app-msg-tabela-vazia>
 </div>

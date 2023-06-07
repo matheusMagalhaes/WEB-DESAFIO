@@ -6,10 +6,10 @@
   </span>
 
   <section *ngIf="dataSource.data.length">
-    <mat-table [dataSource]="dataSource" class=" mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="acao">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
         <mat-cell *matCellDef="let element"> <button matTooltip="Remover" class="delete-btn"
             (click)="deletarEmpresa(element)"><mat-icon class="delete-icon">delete</mat-icon>
           </button></mat-cell>
@@ -33,7 +33,8 @@
 
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+        <mat-cell *matCellDef="let element" matTooltip="{{element.email}}">{{ element.email }}</mat-cell>
+
       </ng-container>
 
       <ng-container matColumnDef="telefone">
