@@ -79,7 +79,8 @@ export class AdicionarEmpresaComponent {
           this.dialog.close(true);
         });
     } else {
-      this.empresaService.editarEmpresa(this.data).subscribe(() => {
+      const updatedData = { ...this.data, ...this.empresaForm.value };
+      this.empresaService.editarEmpresa(updatedData).subscribe(() => {
         this.msgService.msgSucesso('Empresa editada com sucesso');
         this.dialog.close(true);
       });
@@ -93,6 +94,7 @@ export class AdicionarEmpresaComponent {
   editar(data: any) {
     this.isEditar = true;
     this.empresaForm.patchValue({
+      id: data.id,
       nome: data.nome,
       cnpj: data.cnpj,
       email: data.email,
