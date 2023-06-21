@@ -30,7 +30,6 @@ export class EmpresaComponent {
     'email',
     'telefone',
     'endereco',
-    'numero',
   ];
 
   buscarTodasEmpresa() {
@@ -62,5 +61,13 @@ export class EmpresaComponent {
       .subscribe((res) => {
         if (res) this.buscarTodasEmpresa();
       });
+  }
+
+  editarEmpresa(data: any) {
+    this.dialog.open(AdicionarEmpresaComponent, {
+      data: data,
+      width: 'auto',
+      height: 'auto',
+    });
   }
 }

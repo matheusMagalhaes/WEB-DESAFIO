@@ -1,7 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Inject } from '@angular/core';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsultaCepService } from 'src/app/services/consulta-cep.service';
 import { MsgService } from 'src/app/services/msg.service';
@@ -18,13 +18,18 @@ export class AdicionarEmpresaComponent {
     public dialog: MatDialogRef<AdicionarEmpresaComponent>,
     private formBuilder: FormBuilder,
     private cepService: ConsultaCepService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   empresaForm!: FormGroup;
   endereco: any;
+  isEditar?: Boolean;
 
   ngOnInit() {
     this.formValidation();
+    if (this.data != null) {
+      this.editar(this.data);
+    }
   }
 
   formValidation() {
@@ -66,13 +71,41 @@ export class AdicionarEmpresaComponent {
   }
 
   adicionarEmpresa() {
-    this.empresaService.salvarEmrpesa(this.empresaForm.value).subscribe(() => {
-      this.msgService.msgSucesso('Empresa criada com sucesso!')
-      this.dialog.close(true);
-    });
+    if (!this.isEditar) {
+      this.empresaService
+        .salvarEmrpesa(this.empresaForm.value)
+        .subscribe(() => {
+          this.msgService.msgSucesso('Empresa criada com sucesso!');
+          this.dialog.close(true);
+        });
+    } else {
+      this.empresaService.editarEmpresa(this.data).subscribe(() => {
+        this.msgService.msgSucesso('Empresa editada com sucesso');
+        this.dialog.close(true);
+      });
+    }
   }
 
-  modalClose(){
-    this.dialog.close()
+  modalClose() {
+    this.dialog.close();
+  }
+
+  editar(data: any) {
+    this.isEditar = true;
+    this.empresaForm.patchValue({
+      nome: data.nome,
+      cnpj: data.cnpj,
+      email: data.email,
+      telefone: data.telefone,
+      endereco: {
+        cep: data.endereco.cep,
+        numero: data.endereco.numero,
+        complemento: data.endereco.complemento,
+        rua: data.endereco.rua,
+        bairro: data.endereco.bairro,
+        cidade: data.endereco.cidade,
+        uf: data.endereco.uf,
+      },
+    });
   }
 }

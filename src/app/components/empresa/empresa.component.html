@@ -10,9 +10,12 @@
 
       <ng-container matColumnDef="acao">
         <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
-        <mat-cell *matCellDef="let element"> <button matTooltip="Remover" class="delete-btn"
+        <mat-cell *matCellDef="let element">
+          <button matTooltip="Remover" class="btn"
             (click)="deletarEmpresa(element)"><mat-icon class="delete-icon">delete</mat-icon>
-          </button></mat-cell>
+          </button>
+          <button class="btn" matTooltip="editar" (click)="editarEmpresa(element)"><mat-icon class="edit-icon">edit</mat-icon></button>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="id">
@@ -31,12 +34,6 @@
         <mat-cell *matCellDef="let element">{{ element.cnpj | cpfcnpj}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element" matTooltip="{{element.email}}" class="email-cell">
-          {{ element.email }}</mat-cell>
-
-      </ng-container>
 
       <ng-container matColumnDef="telefone">
         <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
@@ -48,10 +45,15 @@
         <mat-cell *matCellDef="let element">{{ element.endereco.rua }}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="numero">
-        <mat-header-cell *matHeaderCellDef>Nº</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.endereco.numero }}</mat-cell>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let element" matTooltip="{{element.email}}" class="email-cell">
+          {{ element.email }}</mat-cell>
+
       </ng-container>
+
+
       <mat-header-row *matHeaderRowDef="colunaEmpresa"></mat-header-row>
       <mat-row *matRowDef="let row; columns: colunaEmpresa"></mat-row>
     </mat-table>

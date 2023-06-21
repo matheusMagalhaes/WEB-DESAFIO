@@ -4,7 +4,9 @@
   </button>
 </span>
 
-<h1>Adicionar nova empresa</h1>
+<h1 *ngIf="!isEditar">Adicionar nova empresa</h1>
+<h1 *ngIf="isEditar">Editar empresa</h1>
+
 
 <form [formGroup]="empresaForm">
   <div class="empresa-container">
@@ -52,12 +54,12 @@
       <input matInput type="text" formControlName="complemento">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" [style.width.rem]="22" >
+    <mat-form-field appearance="outline" [style.width.rem]="22">
       <mat-label>Bairro</mat-label>
       <input matInput type="text" formControlName="bairro">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" >
+    <mat-form-field appearance="outline">
       <mat-label>Cidade</mat-label>
       <input matInput type="text" formControlName="cidade">
     </mat-form-field>
@@ -71,7 +73,7 @@
 
 </form>
 <span class="save-btn-position">
-  <button class="save-btn" (click)=" adicionarEmpresa()" matTooltip="Salvar" [disabled]="empresaForm.invalid">
+  <button class="save-btn" (click)="adicionarEmpresa()" matTooltip="Salvar" [disabled]="empresaForm.invalid">
     <mat-icon> save</mat-icon>
   </button>
 </span>

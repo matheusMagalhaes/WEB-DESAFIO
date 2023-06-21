@@ -17,7 +17,11 @@ export class EmpresaService {
     return this.http.post(`${environment.urlBase}empresa/salvar`, object);
   }
 
-
   deletarEmpresa(id: number) {
     return this.http.delete(`${environment.urlBase}empresa/deletar/${id}`);
-  }}
+  }
+
+  editarEmpresa(empresa: any) {
+    return this.http.patch(`${environment.urlBase}empresa/update`, empresa);
+  }
+}

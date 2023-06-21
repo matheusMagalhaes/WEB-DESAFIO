@@ -97,7 +97,7 @@ Legend {
   font-size: 25px
 }
 
-.delete-btn {
+.btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -107,6 +107,9 @@ Legend {
   color: #dc4242;
 }
 
+.edit-icon{
+  color: rgb(232, 179, 80);
+}
 
 /* column */
 .mat-mdc-header-cell {
