@@ -64,10 +64,15 @@ export class EmpresaComponent {
   }
 
   editarEmpresa(data: any) {
-    this.dialog.open(AdicionarEmpresaComponent, {
-      data: data,
-      width: 'auto',
-      height: 'auto',
-    });
+    this.dialog
+      .open(AdicionarEmpresaComponent, {
+        data: data,
+        width: 'auto',
+        height: 'auto',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) this.buscarTodasEmpresa();
+      });
   }
 }

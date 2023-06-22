@@ -1,10 +1,5 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { MsgService } from 'src/app/services/msg.service';
@@ -31,14 +26,22 @@ export class ModalConfirmacaoComponent {
 
   deletar() {
     if (typeof this.data === 'object' && this.data.hasOwnProperty('cpf')) {
-      this.colaboradorService.deletarColaborador(this.data.id).subscribe(() => {
-        this.msgService.msgSucesso('Usuário Excluido com sucesso!');
-        this.dialog.close(true);
+      this.colaboradorService.deletarColaborador(this.data.id).subscribe({
+        next: () => {
+          this.msgService.msgSucesso('Usuário Excluido com sucesso!');
+          this.dialog.close(true);
+        },
       });
     } else {
-      this.empresaService.deletarEmpresa(this.data.id).subscribe(() => {
-        this.msgService.msgSucesso('Empresa Excluida com sucesso!');
-        this.dialog.close(true);
+      this.empresaService.deletarEmpresa(this.data.id).subscribe({
+        next: () => {
+          this.msgService.msgSucesso('Empresa Excluida com sucesso!');
+          this.dialog.close(true);
+        },
+        error: (res) => {
+          this.msgService.msgError(res.error.message);
+          this.dialog.close(true);
+        },
       });
     }
   }

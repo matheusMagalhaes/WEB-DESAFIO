@@ -14,8 +14,9 @@ body {
   color: white;
   position: fixed;
   top: 20px;
-  margin-top: 3em;
+  margin-top: 1.7rem;
   width: 100%;
+  font-size: medium;
 }
 
 .container {
@@ -32,7 +33,7 @@ body {
   color: white;
   position: fixed;
   top: 20px;
-  margin-top: 3em;
+  margin-top: 1.7rem;
   width: 100%;
 }
 
@@ -139,7 +140,7 @@ Legend {
 .button-container {
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 2rem;
   justify-content: right;
   margin-right: 10px;
 }
