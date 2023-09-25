@@ -87,9 +87,9 @@ export class AdicionarEmpresaComponent {
     }
   }
 
-  modalClose() {
-    this.dialog.close();
-  }
+  // modalClose() {
+  //   this.dialog.close();
+  // }
 
   editar(data: any) {
     this.isEditar = true;
