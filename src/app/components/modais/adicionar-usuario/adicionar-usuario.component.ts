@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Colaborador } from 'src/app/models/colaborador.model';
+import { Component } from '@angular/core';
 import { Empresa } from 'src/app/models/empresa.model';
 import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
-import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MsgService } from 'src/app/services/msg.service';
@@ -23,8 +21,6 @@ export class AdicionarUsuarioComponent {
     private formBuilder: FormBuilder,
     private cepService: ConsultaCepService
   ) {}
-
-  @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   formColaborador!: FormGroup;
   cargos: any[] = [];
@@ -87,7 +83,6 @@ export class AdicionarUsuarioComponent {
   }
 
   salvarColaborador() {
-    debugger
     this.colaboradorSercvice
       .salvarColaborador(this.formColaborador.value)
       .subscribe({

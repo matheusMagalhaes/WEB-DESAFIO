@@ -10,8 +10,6 @@ import { MsgService } from 'src/app/services/msg.service';
   styleUrls: ['./modal-confirmacao.component.css'],
 })
 export class ModalConfirmacaoComponent {
-  @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   constructor(
     private colaboradorService: ColaboradoresService,
     private empresaService: EmpresaService,
